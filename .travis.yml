@@ -1,0 +1,14 @@
+#any time we'll make use of docker we've to be granted super user perms 
+sudo: required
+
+#making sure that travis knows we need docker cli pre-installed
+services:
+  - docker
+
+#series of commands that we'll be executed before our tests are ran..
+before_install:
+  - docker build -t ahmeedaly/docker-react -f Dockerfile.dev .
+
+script:
+  # "-- -- coverage flag is added to automatically exit after performing tests and prevent hanging status"
+  - docker run ahmeedaly/docker-react npm run test -- --coverage
