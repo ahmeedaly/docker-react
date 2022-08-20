@@ -12,4 +12,4 @@ before_install:
 
 script:
   # "-- -- coverage flag is added to automatically exit after performing tests and prevent hanging status"
-  - docker run ahmeedaly/docker-react npm run test -- --coverage
+  - docker run -e CI=true ahmeedaly/docker-react npm run test -- --coverage
