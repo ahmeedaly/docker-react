@@ -13,3 +13,21 @@ before_install:
 script:
   # "-- -- coverage flag is added to automatically exit after performing tests and prevent hanging status"
   - docker run -e CI=true ahmeedaly/docker-react npm run test -- --coverage
+
+
+#App code deplyment
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-reactApp"
+  env: "Dockerreactapp-env"
+  #All app files inside GitHub repo would be zipped up into one single file and will be
+  #copied to a S3 Bucket on AWS
+  bucket_name: "elasticbeanstalk-us-east-1-976852498315"
+  bucket_path: "docker-reactApp"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "AWS_SECRET_KEY"
+
