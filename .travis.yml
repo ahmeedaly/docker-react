@@ -9,6 +9,7 @@ services:
 before_install:
   - docker build -t ahmeedaly/docker-react -f Dockerfile.dev .
 
+
 script:
   # "-- -- coverage flag is added to automatically exit after performing tests and prevent hanging status"
   - docker run ahmeedaly/docker-react npm run test -- --coverage
