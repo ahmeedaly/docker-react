@@ -23,7 +23,7 @@ deploy:
   env: "Dockerreactapp-env"
   #All app files inside GitHub repo would be zipped up into one single file and will be
   #copied to a S3 Bucket on AWS
-  bucket_name: "elasticbeanstalk-us-east-1-976852498315"
+  bucket: "elasticbeanstalk-us-east-1-976852498315"
   bucket_path: "docker-reactApp"
   on:
     branch: master
